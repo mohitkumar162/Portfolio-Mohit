@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════════════════════════
+   DECRYPT LOADING SCREEN  —  drop-in replacement for 00-loader.css
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Outer shell ─────────────────────────────────────────────── */
+#galaxy-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--bg, #070708);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#galaxy-loader.fade-out {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+/* ── Particle canvas ─────────────────────────────────────────── */
+#loader-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ── Scan-line overlay ───────────────────────────────────────── */
+#galaxy-loader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(139, 158, 207, 0.025) 3px,
+    rgba(139, 158, 207, 0.025) 4px
+  );
+  z-index: 1;
+}
+
+/* ── Content stack ───────────────────────────────────────────── */
+.loader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+}
+
+/* ── Pre-label ───────────────────────────────────────────────── */
+.loader-pre {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--faint, #3a3a5c);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: ld-fadein 0.5s ease 0.1s forwards;
+}
+
+/* ── Name letter row ─────────────────────────────────────────── */
+.loader-name-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 0.02em;
+  margin-bottom: 18px;
+}
+
+.ld-char {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(3.2rem, 10vw, 6.5rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  display: inline-block;
+  min-width: 0.58em;
+  text-align: center;
+  transition: color 0.08s;
+}
+
+/* scrambling = random char, noise colour */
+.ld-char.scrambling {
+  color: var(--faint, #3a3a5c);
+}
+
+/* locked = correct letter, full white */
+.ld-char.locked {
+  color: var(--accent, #ffffff);
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, 0.25),
+    0 0 40px rgba(139, 158, 207, 0.12);
+  animation: ld-lock-flash 0.18s ease forwards;
+}
+
+@keyframes ld-lock-flash {
+  0%   { color: var(--muted, #8b9ecf); }
+  60%  { color: #ffffff; }
+  100% { color: var(--accent, #ffffff); }
+}
+
+/* ── "access granted" post-label ────────────────────────────── */
+.loader-post {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--muted, #8b9ecf);
+  margin-bottom: 24px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.loader-post.show {
+  opacity: 1;
+}
+
+/* ── Progress bar ────────────────────────────────────────────── */
+.loader-bar-wrap {
+  width: 200px;
+  height: 1px;
+  background: var(--border, #222228);
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* sweeping highlight behind the fill */
+.loader-bar-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(139, 158, 207, 0.18) 50%,
+    transparent 100%
+  );
+  animation: ld-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes ld-sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(200%);  }
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--muted, #8b9ecf);
+  border-radius: 100px;
+  transition: width 0.06s linear;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Shared fade-in ──────────────────────────────────────────── */
+@keyframes ld-fadein {
+  to { opacity: 1; }
+}
+
+/* ── Body lock while loading ─────────────────────────────────── */
+body.loading {
+  overflow: hidden;
+}

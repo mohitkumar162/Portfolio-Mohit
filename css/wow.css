@@ -1,0 +1,6 @@
+#matrix-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: .04;
+  pointer-events: none;
+}

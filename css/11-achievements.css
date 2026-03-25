@@ -1,0 +1,15 @@
+/* ─── ACHIEVEMENTS ──────────────────────────── */
+.ach-g{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border);}
+.ac{background:var(--card);padding:1.9rem;position:relative;transition:background .25s;}
+.ac::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--border);transition:background .25s;}
+.ac:hover{background:var(--card2);}
+.ac:hover::before{background:var(--accent);}
+.ac-d{font-family:var(--font-mono);font-size:.6rem;color:var(--faint);letter-spacing:.12em;margin-bottom:.55rem;}
+.ac-t{font-size:.93rem;font-weight:500;color:var(--accent);margin-bottom:.5rem;}
+.ac-b{font-size:.84rem;color:var(--muted);}
+
+.ac { transition: .25s, box-shadow .25s !important; }
+.ac:hover {
+  background: rgba(0, 0, 255, 0.0) !important;
+  box-shadow: inset 3px 0 0 var(--accent) !important;
+}

@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════════
+   PARALLAX HERO EFFECT
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Parallax container wraps the whole hero */
+.parallax-scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ── Floating orbs at different depth layers ──────────────────── */
+.p-orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Layer 1 — slowest (far away) */
+.p-orb-1 {
+  width: 420px; height: 420px;
+  top: -80px; right: -60px;
+  background: radial-gradient(circle at 35% 40%,
+    rgba(100, 60, 220, 0.18) 0%,
+    rgba(60, 30, 160, 0.10) 45%,
+    transparent 70%);
+  filter: blur(40px);
+}
+
+/* Layer 2 — medium */
+.p-orb-2 {
+  width: 280px; height: 280px;
+  bottom: 10%; left: -40px;
+  background: radial-gradient(circle,
+    rgba(50, 120, 220, 0.15) 0%,
+    transparent 70%);
+  filter: blur(30px);
+}
+
+/* Layer 3 — fastest (closest) */
+.p-orb-3 {
+  width: 160px; height: 160px;
+  top: 30%; right: 18%;
+  background: radial-gradient(circle,
+    rgba(180, 90, 255, 0.20) 0%,
+    transparent 70%);
+  filter: blur(20px);
+}
+
+/* ── Floating grid dots ───────────────────────────────────────── */
+.p-dots {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(139, 158, 207, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  will-change: transform;
+  transition: transform 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Floating geometric lines ─────────────────────────────────── */
+.p-line {
+  position: absolute;
+  will-change: transform;
+  transition: transform 0.14s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.18;
+}
+.p-line-1 {
+  width: 200px; height: 1px;
+  top: 22%; right: 8%;
+  background: linear-gradient(90deg, transparent, var(--muted), transparent);
+  transform-origin: center;
+}
+.p-line-2 {
+  width: 1px; height: 140px;
+  bottom: 28%; right: 22%;
+  background: linear-gradient(180deg, transparent, var(--muted), transparent);
+}
+.p-line-3 {
+  width: 120px; height: 1px;
+  top: 65%; left: 5%;
+  background: linear-gradient(90deg, transparent, var(--muted), transparent);
+}
+
+/* ── Floating particles ──────────────────────────────────────── */
+.p-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--muted);
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: particle-float var(--dur, 6s) ease-in-out infinite alternate;
+}
+.p-particle:nth-child(1)  { width:3px; height:3px; top:15%; left:25%; opacity:.5; --dur:5.2s; }
+.p-particle:nth-child(2)  { width:2px; height:2px; top:45%; left:72%; opacity:.4; --dur:7.1s; }
+.p-particle:nth-child(3)  { width:4px; height:4px; top:70%; left:55%; opacity:.3; --dur:6.4s; }
+.p-particle:nth-child(4)  { width:2px; height:2px; top:28%; left:88%; opacity:.5; --dur:8s;   }
+.p-particle:nth-child(5)  { width:3px; height:3px; top:82%; left:15%; opacity:.35; --dur:5.8s; }
+.p-particle:nth-child(6)  { width:2px; height:2px; top:55%; left:38%; opacity:.4; --dur:7.5s; }
+
+@keyframes particle-float {
+  from { transform: translateY(0px) translateX(0px); }
+  to   { transform: translateY(-14px) translateX(8px); }
+}
+
+/* ── Hero content sits above parallax scene ───────────────────── */
+#hero-section > *:not(.parallax-scene) {
+  position: relative;
+  z-index: 2;
+}
+#hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Tilt shadow on hero name on mouse move ───────────────────── */
+.h-name {
+  transition: text-shadow 0.15s ease;
+}

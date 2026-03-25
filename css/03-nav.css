@@ -1,0 +1,8 @@
+/* ─── NAV ───────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;backdrop-filter:blur(20px) saturate(.9);background:rgba(7,7,8,.75);border-bottom:1px solid var(--border2);}
+.nav-logo{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.1em;color:var(--accent);text-decoration:none;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width .25s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:hover::after{width:100%;}

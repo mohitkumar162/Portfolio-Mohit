@@ -1,0 +1,107 @@
+/* ─── HERO ──────────────────────────────────── */
+#hero-section{position:relative;height:100vh;overflow:hidden;}
+#hero{height:100vh;min-height:0;max-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:10;max-width:1160px;margin:0 auto;padding:0 4rem;box-sizing:border-box;}
+.h-eyebrow{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;opacity:0;animation:fadeUp .8s .2s forwards;}
+.h-name{font-family:var(--font-display);font-size:clamp(3rem,9vw,7.8rem);line-height:.9;letter-spacing:.02em;color:var(--accent);margin-bottom:.9rem;opacity:0;animation:fadeUp .9s .4s forwards;}
+.h-sub{font-size:.9rem;font-weight:300;color:var(--muted);max-width:480px;margin-bottom:1.2rem;font-style:italic;opacity:0;animation:fadeUp .9s .6s forwards;}
+.type-cursor{display:inline-block;color:var(--muted);animation:blink .7s step-end infinite;margin-left:2px;font-style:normal;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+#typewriter{
+  color:#ffffff;
+  font-style:normal;
+  text-shadow:0 0 20px rgba(139,158,207,0.9), 0 0 40px rgba(139,158,207,0.5), 0 0 80px rgba(139,158,207,0.3);
+}
+.h-tags{display:flex;flex-wrap:wrap;gap:.5rem;opacity:0;animation:fadeUp .9s .8s forwards;}
+.tag{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.32rem .85rem;transition:border-color .2s,color .2s;}
+.tag:hover{border-color:var(--accent);color:var(--accent);}
+.h-scroll{position:absolute;bottom:-5.5rem;left:0;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:.8rem;opacity:0;animation:fadeUp 1s 1.2s forwards;z-index:20;}
+.h-scroll::before{content:'';display:block;width:36px;height:1px;background:var(--faint);}
+.h-scroll::after{content:'';display:block;width:6px;height:6px;border-right:1px solid var(--faint);border-bottom:1px solid var(--faint);transform:rotate(45deg);margin-left:-4px;animation:scrollBounce 1.4s ease-in-out infinite;}
+@keyframes scrollBounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(3px);}}
+
+/* ─── GLITCH EFFECT ─────────────────────────── */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+/* Red channel — shifts left */
+.glitch::before {
+  color: #8b9ecf;
+  clip-path: inset(0 0 0 0);
+  animation: glitch-top 3.5s infinite linear;
+  opacity: 0.85;
+}
+/* Cyan channel — shifts right */
+.glitch::after {
+  color: #070708;
+  clip-path: inset(0 0 0 0);
+  animation: glitch-bot 3.5s infinite linear;
+  opacity: 0.85;
+}
+
+@keyframes glitch-top {
+  0%,  90%  { transform: none;            clip-path: inset(100% 0 0 0); }
+  91%        { transform: translate(-4px, -2px) skewX(-3deg); clip-path: inset(5% 0 80% 0); }
+  92%        { transform: translate( 4px,  2px) skewX( 3deg); clip-path: inset(20% 0 60% 0); }
+  93%        { transform: translate(-3px,  0)   skewX(-2deg); clip-path: inset(55% 0 30% 0); }
+  94%        { transform: translate( 3px, -2px) skewX( 1deg); clip-path: inset(75% 0 10% 0); }
+  95%        { transform: translate(-5px,  1px) skewX(-4deg); clip-path: inset(10% 0 70% 0); }
+  96%        { transform: translate( 2px,  3px) skewX( 2deg); clip-path: inset(40% 0 45% 0); }
+  97%        { transform: translate(-2px, -1px) skewX(-1deg); clip-path: inset(65% 0 20% 0); }
+  98%        { transform: translate( 5px,  0)   skewX( 3deg); clip-path: inset(30% 0 55% 0); }
+  99%        { transform: translate(-3px,  2px) skewX(-2deg); clip-path: inset(85% 0  5% 0); }
+  100%       { transform: none;            clip-path: inset(100% 0 0 0); }
+}
+
+@keyframes glitch-bot {
+  0%,  90%  { transform: none;            clip-path: inset(0 0 100% 0); }
+  91%        { transform: translate( 4px,  2px) skewX( 3deg); clip-path: inset(80% 0 5% 0); }
+  92%        { transform: translate(-4px, -2px) skewX(-3deg); clip-path: inset(60% 0 20% 0); }
+  93%        { transform: translate( 3px,  0)   skewX( 2deg); clip-path: inset(30% 0 55% 0); }
+  94%        { transform: translate(-3px,  2px) skewX(-1deg); clip-path: inset(10% 0 75% 0); }
+  95%        { transform: translate( 5px, -1px) skewX( 4deg); clip-path: inset(70% 0 10% 0); }
+  96%        { transform: translate(-2px, -3px) skewX(-2deg); clip-path: inset(45% 0 40% 0); }
+  97%        { transform: translate( 2px,  1px) skewX( 1deg); clip-path: inset(20% 0 65% 0); }
+  98%        { transform: translate(-5px,  0)   skewX(-3deg); clip-path: inset(55% 0 30% 0); }
+  99%        { transform: translate( 3px, -2px) skewX( 2deg); clip-path: inset( 5% 0 85% 0); }
+  100%       { transform: none;            clip-path: inset(0 0 100% 0); }
+}
+
+/* Occasional full-name flicker burst */
+.glitch {
+  animation: glitch-flicker 3.5s infinite linear;
+}
+@keyframes glitch-flicker {
+  0%,89%,100% { text-shadow: none; }
+  90%          { text-shadow: -3px 0 #ff2d55, 3px 0 #00e5ff; }
+  91%          { text-shadow:  3px 0 #ff2d55,-3px 0 #00e5ff; }
+  92%          { text-shadow: -4px 0 #ff2d55, 4px 0 #00e5ff; }
+  93%          { text-shadow:  2px 0 #ff2d55,-2px 0 #00e5ff; }
+  94%          { text-shadow: -3px 0 #ff2d55, 3px 0 #00e5ff; }
+  95%,99%      { text-shadow: none; }
+  96%          { text-shadow:  5px 0 #ff2d55,-5px 0 #00e5ff; }
+  97%          { text-shadow: -2px 0 #ff2d55, 2px 0 #00e5ff; }
+  98%          { text-shadow:  4px 0 #ff2d55,-4px 0 #00e5ff; }
+}
+
+/* ─── HERO ADDITIONS (Mohit layout) ─────────── */
+.h-name-colored{color:var(--muted);}
+.h-typewriter-line{font-size:clamp(1rem,2vw,1.3rem);font-weight:400;color:var(--text);margin-bottom:.9rem;opacity:0;animation:fadeUp .9s .55s forwards;min-height:1.8em;}
+.h-cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.4rem;opacity:0;animation:fadeUp .9s .75s forwards;}
+.btn-primary{display:inline-flex;align-items:center;padding:.65rem 1.6rem;background:var(--muted);color:var(--bg);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2rem;font-weight:600;transition:opacity .2s;}
+.btn-primary:hover{opacity:.85;}
+.btn-outline{display:inline-flex;align-items:center;padding:.65rem 1.6rem;border:1px solid var(--border);color:var(--text);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2rem;transition:border-color .2s,color .2s;}
+.btn-outline:hover{border-color:var(--muted);color:var(--muted);}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;border:1px solid var(--border);border-radius:50%;color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;}
+.icon-btn:hover{border-color:var(--muted);color:var(--accent);}

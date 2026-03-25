@@ -1,0 +1,108 @@
+/* ─── SKILLS ────────────────────────────────── */
+.sk-block{margin-bottom:2.4rem;}
+.sk-cat{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--faint);margin-bottom:1.2rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+
+/* Icon grid */
+.sk-icons{display:flex;flex-wrap:wrap;gap:1rem;}
+.sk-item{display:flex;flex-direction:column;align-items:center;gap:.55rem;cursor:default;position:relative;}
+.sk-icon-wrap{width:52px;height:52px;background:var(--card);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;transition:border-color .25s,background .25s,transform .25s;}
+.sk-icon-wrap svg{width:100%;height:100%;}
+.sk-item:hover .sk-icon-wrap{border-color:rgba(139,158,207,.45);background:var(--card2);transform:translateY(-4px);}
+.sk-item span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.06em;color:var(--muted);text-align:center;transition:color .2s;}
+.sk-item:hover span{color:var(--text);}
+.sk-hint{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;color:var(--faint);margin-top:-.4rem;margin-bottom:2rem;opacity:.75;margin-top:-3rem;}
+
+/* ─── Proficiency Tooltip ─── */
+.sk-item[data-proficiency]::after{
+  content:'';
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  width:90px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:7px 9px 8px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease, transform .2s ease;
+  /* label text via pseudo — we use a JS-injected span instead */
+  display:none; /* disabled — using JS span below */
+}
+
+.sk-prof-tip{
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  width:96px;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  padding:7px 9px 8px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+  z-index:10;
+  white-space:nowrap;
+  box-shadow:0 8px 24px rgba(0,0,0,.55);
+}
+.sk-prof-tip::after{
+  content:'';
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  border:5px solid transparent;
+  border-top-color:var(--border2);
+}
+.sk-item:hover .sk-prof-tip{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.sk-prof-label{
+  font-family:var(--font-mono);
+  font-size:.55rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--faint);
+  display:block;
+  margin-bottom:5px;
+}
+.sk-prof-pct{
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--text);
+  display:block;
+  margin-bottom:6px;
+}
+.sk-prof-bar-bg{
+  width:100%;
+  height:3px;
+  background:var(--border);
+  border-radius:2px;
+  overflow:hidden;
+}
+.sk-prof-bar-fill{
+  height:100%;
+  border-radius:2px;
+  background:var(--text);
+  width:0%;
+  transition:width .45s cubic-bezier(.4,0,.2,1) .05s;
+}
+.sk-item:hover .sk-prof-bar-fill{
+  width:var(--prof-width);
+}
+
+/* Pills (soft skills) */
+.sk-pills{display:flex;flex-wrap:wrap;gap:.45rem;}
+.pill{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--border);padding:.38rem .95rem;transition:border-color .2s,color .2s,background .2s;}
+.pill { transition: .25s, box-shadow .25s !important; }
+.pill:hover {
+  background: rgba(0, 0, 255, 0.0) !important;
+  box-shadow: inset 3px 0 0 var(--accent) !important;
+}
+

@@ -1,0 +1,26 @@
+/* ─── CERTIFICATES ──────────────────────────── */
+.cert-list{display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);}
+a.ci { text-decoration: none; display: grid; color: inherit; width: 100%; }
+.ci{background:var(--card);display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:1.8rem;padding:1.3rem 2rem;transition:background .2s;position:relative;}
+.ci::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--border);transition:background .25s;}
+.ci:hover{background:var(--card2);}
+.ci:hover::before{background:var(--accent);}
+.ci-f{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);}
+.ci-n{font-size:.9rem;font-weight:500;color:var(--accent);}
+.ci-i{font-size:.78rem;color:var(--muted);font-style:italic;}
+.ci-d{font-family:var(--font-mono);font-size:.62rem;color:var(--faint);white-space:nowrap;letter-spacing:.08em;}
+.ci-i a {
+  color: var(--muted);
+  text-decoration: none;
+  font-style: italic;
+}
+
+.ci-i a:hover {
+  color: var(--accent);
+}
+/* ─── 1. CERTIFICATE ROWS — accent hover ──────────── */
+.ci { transition: .25s, box-shadow .25s !important; }
+.ci:hover {
+  background: rgba(0, 0, 255, 0.0) !important;
+  box-shadow: inset 3px 0 0 var(--accent) !important;
+}

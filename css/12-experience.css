@@ -1,0 +1,29 @@
+/* ─── EXPERIENCE ────────────────────────────── */
+.exp-list{display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);}
+a.ei-link { display: block; text-decoration: none; color: inherit; }
+a.ei-link:hover .ei { background: var(--card2); }
+a.ei-link:hover .ei::before { background: var(--accent); }
+.ei{background:var(--card);padding:2rem 2.2rem;position:relative;transition:background .25s;}
+.ei::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--border);transition:background .25s;}
+.ei:hover{background:var(--card2);}
+.ei:hover::before{background:var(--accent);}
+.ei-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.25rem;}
+.ei-r{font-family:var(--font-display);font-size:1.3rem;letter-spacing:.05em;color:var(--accent);}
+.ei-dur{font-family:var(--font-mono);font-size:.62rem;color:var(--faint);letter-spacing:.1em;white-space:nowrap;margin-left:1rem;padding-top:.25rem;}
+.ei-pts{list-style:none;display:flex;flex-direction:column;gap:.28rem;}
+.ei-pts li{font-size:.84rem;color:var(--muted);padding-left:1.1rem;position:relative;}
+.ei-pts li::before{content:'—';position:absolute;left:0;color:var(--faint);}
+.ei-c a {
+  color: var(--muted);
+  text-decoration: none;
+  font-style: italic;
+}
+
+.ei-c a:hover {
+  color: var(--accent);
+}
+.ei { transition: .25s, box-shadow .25s !important; }
+.ei:hover {
+  background: rgba(0, 0, 255, 0.0) !important;
+  box-shadow: inset 3px 0 0 var(--accent) !important;
+}

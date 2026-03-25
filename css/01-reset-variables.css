@@ -1,0 +1,19 @@
+/* ─── RESET ─────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#070708;
+  --surface:#0d0d10;
+  --card:#131316;
+  --card2:#1a1a1e;
+  --border:#222228;
+  --border2:#1a1a1e;
+  --text:#dddde8;
+  --muted:#8b9ecf;
+  --faint:#3a3a5c;
+  --accent:#ffffff;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.75;overflow-x:hidden;}
