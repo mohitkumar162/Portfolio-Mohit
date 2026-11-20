@@ -3,7 +3,7 @@
   const el = document.getElementById('typewriter');
   if(!el) return;
 
-  const words = ['Cloud Engineer' , 'Java Developer', 'Problem Solver'];
+  const words = ['Cloud Engineer', 'DevOps Enthusiast', 'Java Developer', 'Problem Solver'];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
